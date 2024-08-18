@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="nav-menu">
-    <div class="menu">
+        <div class="menu">
         
             <ul>
                         <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt="">Home</a></li>
@@ -28,8 +28,8 @@
                  
             </ul>
        
+        </div>
     </div>
-</div>
     <!-- <div class="main-content"> -->
         
         <!-- <div class="content"> -->
@@ -37,7 +37,7 @@
 
             
  <div class="form-container">
-    <h1>Formulaire d'inscription</h1>
+        <h1>Formulaire d'inscription</h1>
             <form method="POST" action="." enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Nom et prenom</label>
-                       {{profil_form.nom_prenom}}
+                    {{profil_form.nom_prenom}}
 
                 </div>
                
@@ -58,7 +58,7 @@
                 
                 <div class="form-group">
                     <label for="">Confirme le mots de pass</label>
-                      {{profil_form.mots_de_pass1}}
+                    {{profil_form.mots_de_pass1}}
                 </div>
                 <div class="form-group">
                     <label for="">Date de naissance</label>
