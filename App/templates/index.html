@@ -1,35 +1,65 @@
 {% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
-
+    <title>Page d'Accueil</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo">B@IT</a>
-        <div class="nav-links">
+    <!-- Barre de navigation -->
+    <div class="nav-menu">
+        <div class="menu">
+        
             <ul>
-                <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="#">A propos de nous</a></li>
-                <li><a href="#">Contactez-nous</a></li>
-                <li><a href="{% url 'register' %}">Creer un compte</a></li>
-                <li><a href="#">se connectez</a></li>
+                        <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt="">Home</a></li>
+                    
+                        <li><a href="{% url 'login_view' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/login.jpeg' %}" alt="">Login</a></li> <br><br>
+                       
+                       
+                        
+                       
+                 
             </ul>
+       
         </div>
-        <img style="width: 100px;height: 100px;" src="static/css/menu.png" alt="menu hamburger" class="menu-hamburger">
-    </nav>
-    <header></header>
-    
+    </div>
+
+    <!-- Section principale -->
+    <section class="hero">
+        <div class="hero-text">
+            
+        </div>
+    </section>
+
+    <!-- Cartes de services -->
+    <section class="services">
+        <div class="card">
+            <h1>Nos services: <h2>Service de digitalisation</h2></h1>
+            <p>
+                <ul>
+                    <li>Installation de syteme </li>
+                    <li>Formation pour les utilisateur de systeme</li>
+                    <li>Accompagnement</li>
+                </ul>
+            </p>
+            
+        </div>
+        <div class="card">
+            <h1>Notre Vision</h1>
+            <p>
+             Nous voulons que notre pays progresse en monde technologique
+            </p>
+        </div>
+        <div class="card">
+            <h1>Notre mission</h1>
+            <p>
+             
+            </p>
+        </div>
+        
+    </section>
 </body>
-<script>
-    const menuhamburger =document.querySelector(".menu-hamburger")
-    const navlinks=document.querySelector(".nav-links")
-    menuhamburger.addEventListener('click',()=>{navlinks.classList.toggle('mobile-menu')})
-</script>
 </html>
+

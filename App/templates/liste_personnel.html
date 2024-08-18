@@ -1,34 +1,93 @@
-{% extends "nav.html" %}
 {% load static %}
-{% block content%}
-<html>
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Liste des Employés</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
 <body>
-    <br><br><br><br><br><br>
-    <h1>Liste des Employés</h1>
-    <a href="{% url 'AjouterPersonnel' %}">Ajouter un employé</a>
-    <ul>
-        {% for personnel in personnels %}
-        <li>
-            
-            {{ personnel.nom_prenom}} 
-            
-            {{ personnel.date_naissance}} 
-            {{ personnel.genre}}
-            {{ personnel.qualification}} 
-            {{ personnel.telephone}} 
-            {{ personnel.address}}
-            {{personnel.date_enre}}
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
 
-            <a href="{% url 'editerpersonnel' personnel.pk %}">Modifier</a>
-            <a href="{% url 'supprimer_les_personnel' personnel.pk %}">Supprimer</a>
-           
-        </li>
-        {% endfor %}
-    </ul>
+                <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+        
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+                <input type="text" placeholder="Claim Application">
+                <input type="text" placeholder="Claim Number">
+                <button>Search</button>
+            </div>
+            <div class="user-info">
+                <img src="static/media/img.jpg" alt="User Photo">
+                <span>Welcome NextGen!</span>
+            </div>
+        </header>
+        <div class="content">
+            <h2>Open Claims</h2>
+            <button>Imprimer la liste des personnel</button>
+            <button>AjouterPersonnel</button>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th >Id</th>
+                        <th >Nom et Prenom</th>
+                        <th >Date de naissance</th>
+                        <th >Genre</th>
+                        <th >Qualification</th>
+                        <th >Numero de Telephone</th>
+                        <th >Adresse</th>
+                        <th >Date d'enregistrement</th>
+                        <th class="data-label">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                          
+                        {% for personnel in personnels %}
+                        <tr>  
+                                
+                                <td data-label="ID"> {{ personnel.id}} </td>   
+                                <td data-label="Nom et Prenom"> {{ personnel.nom_prenom}} </td>
+                                    
+                                <td data-label="Date de naissance"> {{ personnel.date_naissance}} </td>
+                                <td data-label="Genre"> {{ personnel.genre}}</td> 
+                                <td data-label="Qualification">{{ personnel.qualification}} </td>  
+                                <td data-label="Numero de Telephone"> {{ personnel.telephone}} </td> 
+                                <td data-label="Adresse">{{ personnel.address}}</td>  
+                                <td data-label="Date d'enregistrement">{{personnel.date_enre}}</td>  
+
+                                <td data-label="Actions">   <a href="{% url 'editerpersonnel' personnel.pk %}">Modifier</a>
+                                    <a href="{% url 'supprimer_les_personnel' personnel.pk %}">Supprimer</a></td>
+                         </tr>   
+                                
+                        {% endfor %}
+
+                   
+                </tbody>
+            </table>
+        </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-{%endblock%}
+
+{% endblock %}

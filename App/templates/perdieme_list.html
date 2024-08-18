@@ -1,0 +1,100 @@
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .valid {
+            color: green;
+        }
+        .invalid {
+            color: red;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systeme</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+           
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+            
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+
+                <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+           
+        </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            
+        </header>
+        <div class="content">
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Personnel</th>
+                        <th>Projet</th>
+                        <th>Description</th>
+                        <th>Montant</th>
+                        <th>Date</th>
+                        <th>Code Transaction</th>
+                        <th>Validation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in perdieme_data %}
+                        <tr>
+                            <td>{{ data.perdieme.id }}</td>
+                            <td>{{ data.perdieme.personnel }}</td>
+                            <td>{{ data.perdieme.projet }}</td>
+                            <td>{{ data.perdieme.description}}</td>
+                            <td>{{ data.perdieme.montant }}</td>
+                            <td>{{ data.perdieme.date_transaction }}</td>
+                            <td>{{ data.perdieme.code_transaction_numero_bordereau }}</td>
+                            <td>
+                                {% if data.is_validated %}
+                                    <span class="valid"><img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/accepte.png' %}" alt=""></span>
+                                {% else %}
+                                    <span class="invalid"><img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/non.png' %}" alt=""></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

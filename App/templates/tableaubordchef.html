@@ -1,0 +1,63 @@
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                
+                <li><a href="{% url 'register' %}"> Creer un compte</a></li>
+                <li><a href="{% url 'login_view' %}"> Se connectez</a></li><br><br>
+
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        
+        <div class="content">
+            
+            
+        <div class="table-responsive">
+            <li><a href="{% url 'tableaubord' %}"> <button style="color:black">Tableau de Bord pour les Technicien</a></li>
+      
+
+                
+            <li><a href="{% url 'liste_personnel' %}"> <button style="background-color: white;color:green">Formulaire pour complete les rapport</button></a></li>
+            <li><a href="{% url 'listeperdieme' %}"><button style="background-color: white;color:green">Voir les perdieme pour valider</button> </a></li>
+            <li><a href="{% url 'listedesprojet' %}"><button style="background-color: white;color:green">Lites de tous les projet avec des personnels </button></a></li>
+            <li><a href="{% url 'listeperdi' %}"><button style="background-color: white;color:green">Lites des perdiemes valide ou non valide </button></a></li>     
+            <li><a href="{% url 'creer' %}"><button style="background-color: white;color:green"> <img style="width: 12px;" src="{% static 'media/ajouter.png' %}" alt="">Ajouter un Projet</button></a></li>
+            <li><a href="{% url 'ajoutmateriel' %}"><button style="background-color: white;color:green"><img style="width: 12px;" src="{% static 'media/ajouter.png' %}" alt="">Ajouter un materiel</button></a></li>
+            <li><a href="{% url 'liste_materiel' %}"><button style="background-color: white;color:green">Listes des materiels</button></a></li>
+            <li><a href="{% url 'liste_personnel' %}"><button style="background-color: white;color:green">Lites des personnels </button></a></li>
+            <li><a href="{% url 'AjouterPersonnel' %}"><button style="background-color: white;color:green"> <img style="width: 12px;" src="{% static 'media/ajouter.png' %}" alt="">Ajouter les personnel </button></a></li>
+            <li><a href="{% url 'ajouterperdieme' %}"><button style="background-color: white;color:green"> <img style="width: 12px;" src="{% static 'media/ajouter.png' %}" alt="">Ajouter les perdiemes </button></a></li>
+            <li><a href="{% url 'listerapport' %}"><button style="background-color: white;color:green">  Listes des rapport </button></a></li>
+        </div>
+            {% comment %} <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div> {% endcomment %}
+        </div>
+
+        <!-- <footer><h4>Adresse</h4> </footer> -->
+    </div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,12 +1,356 @@
-#popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid #ccc;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+/* .sidebar {
+    width: 250px;
+    background-color: #3a3f51;
+    color: white;
     padding: 20px;
-    z-index: 1000;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+} */
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #4b0082;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e9ecef;
+    /* padding: 5px; */
+    border-radius: 5px;
+}
+
+
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+    position: fixed;
+}
+
+.sidebar .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.sidebar .logo p {
+    margin: 0;
+    font-size: 12px;
+    color: green;
+}
+.main-content header{
+    position: fixed;
+    background-color: #ccc;
+    width: 1000px;
+}
+.nav-menu{
+   /* flex-grow: 4; */
+   display: flex;
+   margin-top: 70px; /* Adjust for navbar height */
+
+   max-width: 12%;
+   width: 20%;
+   /* padding: 58px; */
+   margin: 20 28px;
+   border-radius: 10px;
+   background-color: transparent;
+   overflow: hidden;
+   box-shadow: 0 15px 20px rgba(0,0,0, 0.6);
+  
+   margin-top: 2;
+   position:fixed;
+  
+}
+.nav-menu a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.nav-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #ccc;
+}
+
+.nav-menu ul li {
+    padding: 10px 20px;
+    
+    cursor: pointer;
+}
+
+.nav-menu ul li:hover {
+    background-color: #4a4e62;
+    
+   
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h2 {
+    margin: 0 0 20px 0;
+}
+
+.content button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar {
+    display: flex;
+     /* Full height of the viewport */
+}
+
+.navbar-menu {
+    margin-top: 23px;
+    width: 200px;
+    /* background-color: #ffffff; */
+    background-color: #4caf50;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 15px;
+    /* background-color: #DFDD;; */
+}
+
+.navbar-item {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-item:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.navbar-auth {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    
+}
+
+.navbar-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.navbar-link:hover {
+    background-color: #f1f1f1;
+}
+.cop{
+    margin-top: 40px;
+   
+}
+*,*::before, *,::after{
+    box-sizing: border-box;
+}
+/* .table-responsive table{
+    max-height: 500px;
+    overflow: auto;
+} */
+
+.table-responsive table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-responsive th,td{
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #ccc;
+}
+.table-responsive th{
+    background-color: #000;
+    color: #fff;
+}
+tr:nth-child(odd){
+    background-color: #eee;
+}
+@media only screen and (max-width:500px){
+   .table-responsive table,
+   .table-responsive thead,
+   .table-responsive tbody,
+   .table-responsive tr,
+   .table-responsive th,
+   .table-responsive td{
+        display: block;
+    }
+    .navbar-menu{
+        display: none;
+    }
+    .table-responsive td{
+        padding-left: 150px;
+        position: relative;
+        margin-top: -1px;
+        background: #FFF;
+    }
+    .table-responsive td::before{
+        padding: 10px;
+        content:attr(data-label);/* recuperation des label en mettant a gauche */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 130px;
+        bottom: 0;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    }
+    .table-responsive tr{
+        margin-bottom: 1rem;
+    }
+    .table-responsive thead{
+        display: none;
+    }
+    .table-responsive th + td{
+        padding-left: 10px;
+    }
+    .table-responsive th + td::before{
+        display: none;
+
+    }
+    
+}
+.table-responsive tr:hover{
+    background-color: #4caf50;
+}
+
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.content h2 {
+    margin-top: 0;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

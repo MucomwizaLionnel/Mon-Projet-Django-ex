@@ -1,16 +1,62 @@
-{% extends "nav.html" %}
+
+
+
 {% load static %}
-<html>
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Formulaire Employé</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout d'un autre projet</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
 <body>
-    <br><br><br><br><br>
-    <h1>{{ form.instance.pk|yesno:"Modifier Employé,Créer Employé" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sauvegarder</button>
-    </form>
-    <a href="{% url 'liste_personnel' %}">Retour à la liste</a>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+
+               <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+                
+            </div>
+           
+        </header>
+        <div class="content">
+          
+            <!-- <button>Ajouter une une autres emp</button> -->
+        <div class="table-responsive">
+            <h1>{{ form.instance.pk|yesno:"Modifier Employé,Créer Employé" }}</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sauvegarder</button>
+            </form>  
+        </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
+
+{% endblock %}
+
+
+

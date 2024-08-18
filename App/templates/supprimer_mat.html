@@ -1,15 +1,45 @@
 <!-- horaires/templates/horaires/employe_confirm_delete.html -->
-{% extends "nav.html" %}
+
 {% load static %}
 {%block content%}
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Supprimer Employé</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systeme</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
-<br><br><br><br><br><br><br>
-<link rel="stylesheet" href="{% static 'css/nav.css' %}">
-<link rel="stylesheet" href="{% static 'css/ss.css' %}">
-<div class="center-text">
+<body>
+    <div class="sidebar">
+        <div class="logo">
+
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt="">Home</a></li>
+                 
+                
+
+                <li><a href="{% url 'login_view' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/login.jpeg' %}" alt="">Login</a></li> <br><br>
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+           
+           
+        </header>
+        <div class="content">
+            <h2></h2>
+          
+           
+        <div class="table-responsive">
+            <h1>Confirmer la suppression de {{personnels.nom_prenom}}?</h1>
+    
     <form method="post">
     <h1>Confirmer la suppression?</h1>
     
@@ -19,6 +49,10 @@
             <ul>Quantites:{{materiels.quantite_materiel}}?</ul> </h1> <button type="submit">Confirmer</button></li>
     </form>
     <a href="{% url 'liste_materiel' %}">Annuler</a>
-</div>    
-
+</div>
+<div class="no-print">
+    <button onclick="window.print()">Imprimer cette page</button>
+</div>
+</div>
+</div>
 {% endblock %}

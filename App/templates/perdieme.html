@@ -1,29 +1,86 @@
-{% extends "nav.html" %}
 {% load static %}
-<html>
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Liste des projets</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
 <body>
-    <h1>Liste des projets</h1>
-    <a href="{% url 'ajoutmateriel' %}">Ajouter un materiel</a>
-    <ul>
-        {% for mat in materiels %}
-        <li>
-            {{ mat.projet.nom_projet}}
-            {{ mat.nom_materiel}} 
+    <div class="sidebar">
+        <div class="logo">
             
-            {{ mat.type_materiel}}
-            {{ mat.quantite_materiel}}
-            {{ mat.qualite}}
-            {{mat.date_d_enregistrement}}
-          
-            <a href="#">Modifier</a>
-            <a href="#">Supprimer</a>
-           
-        </li>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt="">Home</a></li>
+
+                <li><a href="{% url 'tableaubord' %}"> Tableau de bord</a></li> <br><br>
+                    
+               <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                        
+                       
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+               
+            </div>
+            <div class="user-info">
+                
+            </div>
+        </header>
+        <div class="content">
+            
+        <div class="table-responsive">
+        <table><thead><tr>
+            <th>Id</th><th>Nom et Prenom de personne</th><th>Type perdieme</th><th>Montant</th>
+            <th>Date de transaction</th><th>QCode de transaction</th><th>Actions</th><th>Validation</th>
+        </tr></thead>
+        
+            <tbody>
+        {% for perdieme in perdiemes %} 
+         <tr>
+            <td>{{ perdieme.id}}</td>
+            <td>{{ perdieme.personnel.nom_prenom}}</td>
+            <td>{{ perdieme.type_perdieme}}</td>
+            <td>{{ perdieme.montant}}</td>
+            
+            <td>{{perdieme.date_transaction}}</td>
+            <td>{{perdieme.code_transaction_numero_bordereau}}</td>
+            
+        <td>
+            <a href="#"><img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/modif.png' %}" alt=""></a>
+
+        <td><a href="{% url 'valide' id=perdieme.id %}"><img style="width: 100px;height: 30px; border-radius :50px;" src="{% static 'media/valider.jpeg' %}" alt=""></a></td>    
+        
+        <td>
+        </tr>
+         
+        
         {% endfor %}
-    </ul>
+    </tbody>
+        </table>
+
+       
+
+   
+</div>
+    <div class="no-print">
+        <button onclick="window.print()">Imprimer cette page</button>
+    </div>
+</div>
+</div>
 </body>
 </html>
+
+{% endblock %}
+

@@ -1,27 +1,74 @@
-{% extends "nav.html" %}
+
+
+
 {% load static %}
 {% block content %}
 
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Formulaire des materiels</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
-    <link rel="stylesheet" href="{% static 'css/ss.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
 <body>
-    <br><br><br><br><br><br><br>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                
+
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+
+                <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                 
+                
+                
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+                <input type="text" placeholder="Claim Application">
+                <input type="text" placeholder="Claim Number">
+                <button>Search</button>
+            </div>
+            <div class="user-info">
+                <img src="static/media/img.jpg" alt="User Photo">
+                <span>Welcome NextGen!</span>
+            </div>
+        </header>
+        <div class="content">
+           <br><br><br>
+        <div class="table-responsive">
+            <h1>{{ form.instance.pk|yesno:"Modifier le projet,Ajouter un autre projet" }}</h1>
     
-<div class="center-text">
-    
-    <h1>{{ form.instance.pk|yesno:"Modifier le projet,Ajouter un autre projet" }}</h1>
-    <div class="input">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Sauvegarder</button>
     </form>
-    </div>
+ 
     <a href="{% url 'listedesprojet' %}">Retour à la liste</a>
-
-</div>
+        </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
+
 {% endblock %}
+
+
+

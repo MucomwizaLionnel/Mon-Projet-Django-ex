@@ -11,3 +11,6 @@ admin.site.register(Rapport)
 admin.site.register(Perdieme)
 admin.site.register(Materiel)
 admin.site.register(Personnel)
+admin.site.register(PerdiemeValidation)
+admin.site.register(Typemateriel)
+

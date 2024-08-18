@@ -1,42 +1,54 @@
-{% extends "nav.html" %}
-{% block content %}
 {% load static %}
+{% block content %}
 
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Formulaire de connexion</title>
-
-        <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
-        <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
-      
-    <div class="login">
-        <div class="wrapper">
-            <form  method="POST" action="">
-                <h1>Connexion</h1>
-                {% csrf_token %}
-                
-                    <div class="input-box">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    
+    <div class="nav-menu">
+        <div class="menu">
+        
+            <ul>
+                        <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt="">Home</a></li>
+                    
+                        <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
                         
-                         {{ Connexion_form.nom_utilisateur }}
-                        <i class='bx bxs-user'></i>
-                        
-                    </div>
-
-                    <div class="input-box">
-                        
-                         {{ Connexion_form.mots_de_pass }}
-                        <i class='bx bx-lock-alt'></i>
-                        
-                    </div>
-                    <button type="submit" class="btn">Se connecter</button>
-                    <div class="register-link">
-                        <p>Si tu n'a pas un compte. Clique sur  --><a href="{% url 'register' %}" a>Creer un compte</a> </p>
-                    </div>
-            </form>
+                       
+                 
+            </ul>
+       
         </div>
-
-
     </div>
-    {% endblock %}
+          
+            <div style="border-radius: 40px;width: 460px;height:350; margin: 100px auto; " class="form-container">
+                            <h1>Formulaire de connexion</h1>
+                            <form  method="POST" action="">
+                                
+                                {% csrf_token %}
+                                
+                                    <div style="width: 400px;" class="form-group">   
+                                         {{ Connexion_form.nom_utilisateur }}   
+                                    </div>
+                                    <div style="width: 400px;"  class="form-group">
+                                         {{ Connexion_form.mots_de_pass }}    
+                                    </div>
+                                    <button style="width: 400px;"  type="submit">Se connecter</button>
+
+                            </form>
+                        </div>
+                        
+             
+</body>
+</html>
+                    
+{% endblock %}
+
+
+                    

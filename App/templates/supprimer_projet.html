@@ -1,22 +1,68 @@
-<!-- horaires/templates/horaires/employe_confirm_delete.html -->
-{% extends "nav.html" %}
+<!-- horaires/templates/horaires/projet_confirm_delete.html -->
+
+
 {% load static %}
 {% block content %}
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Supprimer Employé</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
-<br><br><br><br><br>
 <body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}"> Home</a></li>
+                
+                
+                   <li><a href="{% url 'liste_personnel' %}">Personnel</a></li>
+                    
+               
+                
+                    <summary><li><a href="{% url 'listedesprojet' %}">Les projets</a></li></summary>
+                
+                    
+                    <li><a href="#">Perdieme</a></li><br><br><br>
+
+                <li><a href="{% url 'register' %}"> Creer un compte</a></li>
+                <li><a href="{% url 'login_view' %}"> Se connectez</a></li><br><br>
+
+
+                <li><a href="{% url 'index' %}"> Deconnectez</a></li>
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+   
+        <div class="content">
+            
+          
+        
+        <div class="table-responsive">
+ <a href="{% url 'listeprojet' %}"><button>AjouterPersonnel</button></a>
     <h1>Confirmer la suppression de {{projets.nom_projet}}?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Confirmer</button>
     </form>
     <a href="{% url 'listedesprojet' %}">Annuler</a>
+</div>
+</div>
 </body>
 </html>
 
-{% endblock%}
+{% endblock %}
+
+
+

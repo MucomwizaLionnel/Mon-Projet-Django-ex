@@ -16,7 +16,7 @@ class ProfileForm(forms.Form):
 	#______________champ pou profil___________#
 		date_naissance = forms.DateField(widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}))
 		genre = forms.CharField(max_length=20)
-		qualification=forms.CharField(max_length=20)
+		grade=forms.CharField(max_length=20)
 		telephone = forms.CharField(max_length=20)
 		address = forms.CharField(max_length=20)
 		date_enre=forms.DateField(widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}))
@@ -74,12 +74,61 @@ class Materiel_form(forms.ModelForm):
             except ValueError:
                 raise ValidationError('La date doit être au format AAAA-MM-JJ.')
         return date
-class Model:
-    def delete(self):
-        print("Instance deleted")
+# class Model:
+#     def delete(self):
+#         print("Instance deleted")
 
-# Créez une instance de la classe Model
-model_instance = Model()
+# # Créez une instance de la classe Model
+# model_instance = Model()
 
-# Appelez la méthode delete sur l'instance
-model_instance.delete()
+# # Appelez la méthode delete sur l'instance
+# model_instance.delete()
+
+class Perdieme_Form(forms.ModelForm):
+
+    class Meta:
+        model = Perdieme
+        fields = '__all__'
+        widgets = {
+            'date_transaction': forms.DateInput(attrs={'type': 'date'}),
+            
+        }
+
+    def clean_date_field(self):
+        date = self.cleaned_data['date_field']
+        if date:
+            try:
+                datetime.datetime.strptime(str(date), '%Y-%m-%d')
+            except ValueError:
+                raise ValidationError('La date doit être au format AAAA-MM-JJ.')
+        return date
+
+
+class Rapport_Form(forms.ModelForm):
+
+    class Meta:
+        model = Rapport
+        fields = '__all__'
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            
+        }
+
+    def clean_date_field(self):
+        date = self.cleaned_data['date_field']
+        if date:
+            try:
+                datetime.datetime.strptime(str(date), '%Y-%m-%d')
+            except ValueError:
+                raise ValidationError('La date doit être au format AAAA-MM-JJ.')
+        return date
+class PerdiemeValidationForm(forms.ModelForm):
+    class Meta:
+        model = PerdiemeValidation
+        fields = ['is_validated']
+        widgets = {
+            'is_validated': forms.CheckboxInput(),
+        }
+        labels = {
+            'is_validated': 'J\'ai reçu le per diem',
+        }

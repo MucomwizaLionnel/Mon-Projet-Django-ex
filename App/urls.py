@@ -11,8 +11,8 @@ urlpatterns = [
     path('register/',views.register ,name='register' ),
     path('home/',views.home,name='home' ),
    
-    path('control/',views.control,name='control' ),
-    path('chef_equipe/',views.responsables,name='responsables' ),
+    path('tablau/',views.tableaubord,name='tableaubord' ),
+    # path('chef_equipe/',views.responsables,name='responsables' ),
   
     path('projet/',views.liste_des_projets,name='listedesprojet'),
     path('personnel/',views.liste_des_personnel,name='liste_personnel' ),
@@ -27,12 +27,22 @@ urlpatterns = [
     path('editermat<int:pk>/',views.editer_materiel, name='editerMateriel'),
     path('supprimermateriel<int:pk>/',views.supprimer_materiel,name='effacer_materiel'),
     path('print/', views.print_materiel, name='print_materiel'),
+    path('perdieme/', views.liste_perdieme, name='listeperdieme'),
+    path('Ajoutperdieme/', views.ajouter_perdieme, name='ajouterperdieme'),
+    
+    path('projet/<int:id>/', views.projet_detail, name='projet_detail'),#le lien qui permer de clique sur les detaill des projet
+    path('Validation/<int:id>/', views.validate_perdieme, name='valide'),#le lien de validation de perdieme
+
+    path('listeperdi/', views.perdieme_list, name='listeperdi'), #verification des perdieme valider ou non valider
+    # path('actualite/', views.Actualites, name='actualites'),
+    path('tableaubordtechnicien/', views.tableaubordtech, name='tableaubordTechn'),
 
 
-
-
-
-    path('navbar',views.navigation,name='navbar' ),
+    path('rapport',views.rapport_view,name='rapport' ),
+    path('listerapport',views.liste_rapport,name='listerapport'),
+    path('tableaubordchefs/',views.tableaubordchef,name='tableauborddeschef'),
+    path('touslesprojet/',views.listeprojet,name='touslesprojet')
+    
     
 
     

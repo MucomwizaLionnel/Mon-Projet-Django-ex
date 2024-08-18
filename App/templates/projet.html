@@ -1,42 +1,72 @@
-{% extends "nav.html" %}
 {% load static %}
-{% block content%}
-<br><br><br><br><br><br>
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Liste des projets</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/ss.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 </head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}"> Home</a></li>
+                
 
+                <li><a href="{% url 'tableauborddeschef' %}">Tableau de bord</a></li>
 
-
-    <h1>Liste des projets</h1>
-    <a href="{% url 'creer' %}">Ajouter un employé</a>
-    <div class="center-text">
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+              
+            </div>
+            
+        </header> <br><br><br>
+        <div class="content">
+          
+        <div class="table-responsive">
         <table><thead><tr>
-            <th>Id</th><th>Nom de materiel</th><th>Nom de Projet</th><th>Type de materiel</th>
-            <th>Quantites</th><th>Qualite</th><th>Date d'enregistrement</th><th>Actions</th>
+            <th>Id</th><th>Nom du projet</th><th>Nom de chef de projet</th><th>Lieu ou adresse</th>
+            <th>Date de debit</th><th>Date de fin</th><th>Description</th><th>Actions</th>
         </tr></thead>
         
             <tbody>
         {% for projet in projets %}<tr>
             <td>{{projet.id}}</td>
            <td>{{ projet.nom_projet}} </td> 
-            <td>{{ projet.chef_projet.nom}}</td>
+            <td>{{ projet.chef_projet.nom_prenom}}</td>
             <td>{{ projet.lieu}}</td>
-            <td>{{ projet.date_debit}}</td>
+            <td>{{ projet.date_debut}}</td>
             <td>{{ projet.date_fin}}</td>
             <td>{{ projet.description_projet}}</td>
-            <td><a href="{% url 'editer' projet.pk %}">Modifier</a>
-            <a href="{% url 'effacer' projet.pk %}">Supprimer</a></td>
+            <td><a href="{% url 'editer' projet.pk %}"><img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/modif.png' %}" alt=""></a>
+           
         </tr>  
         
         {% endfor %}
     </tbody>
         </table>
-        
-        <div class="no-print">
-            <button onclick="window.print()">Imprimer cette page</button>
-        </div>
-        
-{%endblock%}
+   
+</div>
+    <div class="no-print">
+        <button onclick="window.print()">Imprimer cette page</button>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

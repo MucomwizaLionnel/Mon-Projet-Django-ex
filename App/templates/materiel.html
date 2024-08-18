@@ -1,46 +1,82 @@
-{% extends "nav.html" %}
+{% block content %}
 {% load static %}
-{% block content%}
-<br><br><br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>claimauditor</h1>
+            <p>Manage Payment Integrity</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
 
-    <title>Liste des projets</title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
-    <link rel="stylesheet" href="{% static 'css/ss.css' %}">
-    <div class="center-text">
-    <h1>Liste des materiels</h1><a href="{% url 'ajoutmateriel' %}">Ajouter un materiel</a>
+               <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+               
+            </ul>
+        </nav>
     </div>
-    <div class="center-text">
-        <table><thead><tr>
-            <th>Id</th><th>Nom de materiel</th><th>Nom de Projet</th><th>Type de materiel</th>
-            <th>Quantites</th><th>Qualite</th><th>Date d'enregistrement</th><th>Actions</th>
-        </tr></thead>
-    
-    
-        <tbody>
-        {% for mat in materiels %}
-        
-        <tr>
-           <td> {{ mat.id}}</td>
-           
-            <td>{{ mat.nom_materiel}} </td>
-            <td>{{ mat.projet.nom_projet}}</td>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+               
+            </div>
             
-            <td>{{ mat.type_materiel}}</td>
-            <td>{{ mat.quantite_materiel}}</td>
-            <td>{{ mat.qualite}}</td>
-            <td>{{mat.date_d_enregistrement}}</td>
+        </header>
 
-            <td>
-            <a href="{% url 'editerMateriel' mat.pk %}">Modifier</a>
-            <a href="{% url 'effacer_materiel' mat.pk %}">Supprimer</a></td><br>
-        </tr>
+
+        <div class="content">
+           
+            <a href="{% url 'ajoutmateriel' %}"><button>Ajouter les materiels</button></a>
+        <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom de materiel</th>
+                                <th>Nom de Projet</th>
+                                <th>Type de materiel</th>
+                                <th>Quantites</th>
+                                <th>Qualite</th>
+                                <th>Date d'enregistrement</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mat in materiels %}
+                                <tr>
+                                    <td>{{ mat.id }}</td>
+                                    <td>{{ mat.nom_materiel }}</td>
+                                    <td>{{ mat.projet.nom_projet }}</td>
+                                    <td>{{ mat.type_materiel }}</td>
+                                    <td>{{ mat.quantite_materiel }}</td>
+                                    <td>{{ mat.qualite }}</td>
+                                    <td>{{ mat.date_d_enregistrement }}</td>
+                                    <td>
+                                        <a href="{% url 'editerMateriel' mat.pk %}">Modifier</a>
+                                        <a href="{% url 'effacer_materiel' mat.pk %}">Supprimer</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+            <a href="{% url 'print_materiel' %}">Imprimer la liste des materiels</a>
        
-        {% endfor %}
-    </tbody>
-</table>
-<!-- Par exemple dans votre template principal -->
-<a href="{% url 'print_materiel' %}">Imprimer la liste des materiels</a>
-
-</div>
     
-    {% endblock%}
+</body>
+</html>
+{% endblock %}
